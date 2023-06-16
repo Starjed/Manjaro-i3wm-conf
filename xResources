@@ -14,45 +14,44 @@ XTerm*faceSize:          11
 XTerm*reverseVideo:      on
 XTerm*selectToClipboard: true
 
-*background:                      #273428
-*foreground:                      #d8d8d8
-*fading:                          8
-*fadeColor:                       black
-*cursorColor:                     #1ABB9B
-*pointerColorBackground:          #2B2C2B
-*pointerColorForeground:          #16A085
 
-!! black dark/light
-*color0:                          #222D31
-*color8:                          #585858
+!Acid Drop color scheme by Alexis « Sam » « Siphonay » V.
 
-!! red dark/light
-*color1:                          #ab4642
-*color9:                          #ab4642
+*.background:           #444444
+*.foreground:           #EFEFEC
+*.cursorColor:          #EFEFEC
 
-!! green dark/light
-*color2:                          #7E807E
-*color10:                         #8D8F8D
+!BLK
+URxvt.color0:     #212121
+URxvt.color8:     #616161
 
-!! yellow dark/light
-*color3:                          #f7ca88
-*color11:                         #f7ca88
+!RED
+URxvt.color9:     #FF1744
+URxvt.color1:     #D50000
 
-!! blue dark/light
-*color4:                          #7cafc2
-*color12:                         #7cafc2
+!GRN
+URxvt.color10:    #00E676
+URxvt.color2:     #00C853
 
-!! magenta dark/light
-*color5:                          #ba8baf
-*color13:                         #ba8baf
+!BLU
+URxvt.color12:    #00E5FF
+URxvt.color4:     #00B8D4
 
-!! cyan dark/light
-*color6:                          #1ABB9B
-*color14:                         #1ABB9B
+!YEL
+URxvt.color11:    #EEFF41
+URxvt.color3:     #C6FF00
 
-!! white dark/light
-*color7:                          #d8d8d8
-*color15:                         #f8f8f8
+!CYN
+URxvt.color14:    #64FFDA
+URxvt.color6:     #1DE9B6
+
+!MAG
+URxvt.color13:    #D500F9
+URxvt.color5:     #AA00FF
+
+!WHT
+URxvt.color7:     #BDBDBD
+URxvt.color15:    #EEEEEE
 
 Xcursor.theme: xcursor-breeze
 Xcursor.size:                     0
@@ -62,6 +61,7 @@ URxvt.font:                       9x15,xft:TerminessTTFNerdFontMono
 ! alternative font settings with 'terminus':
 ! URxvt.font:      -xos4-terminus-medium-r-normal--16-160-72-72-c-80-iso10646-1
 ! URxvt.bold.font: -xos4-terminus-bold-r-normal--16-160-72-72-c-80-iso10646-1
+
 
 
 
@@ -239,4 +239,3 @@ URxvt.keysym.Shift-Control-Down:  \033[1;6B
 ! -xos4-terminus-bold-r-normal--24-240-72-72-c-120-iso10646-1
 ! -xos4-terminus-bold-r-normal--28-280-72-72-c-140-iso10646-1
 ! -xos4-terminus-bold-r-normal--32-320-72-72-c-160-iso10646-1
-
