@@ -1,0 +1,217 @@
+[colors]
+background = #222
+foreground = #c0caf5
+primary = #F0C674
+secondary = #8ABEB7
+alert = #A54242
+disabled = #707880
+
+[bar/bar1]
+monitor = ${env:MONITOR:DP-2}
+width = 90%
+height = 2%
+offset-x = 5%
+offset-y = 1%
+fixed-center = true
+radius = 8
+bottom = false
+
+; dpi = 96
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 3pt
+
+border-size = 1pt
+border-color = ${colors.secondary}
+
+padding-left = 0
+padding-right = 1
+
+module-margin-right = 1
+module-margin-left = 2
+
+separator = |
+separator-foreground = ${colors.disabled}
+
+font-0 = "JetBrainsMono Nerd Font:size=16;"
+font-1 = "FontAwesome:size=13;4"
+font-2 = "JetBrainsMono Nerd Font:size=12;2"
+font-3 = "JetBrainsMono Nerd Font:size=12;2"
+
+
+modules-left = xworkspaces xwindow
+
+modules-center = spotify1
+
+modules-right = filesystem pulseaudio cpu2 memory2 wlan eth date reboot poweroff
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+enable-ipc = true
+
+tray-position = right
+tray-padding = 2
+
+; wm-restack = generic
+; wm-restack = bspwm
+wm-restack = i3
+
+override-redirect = true
+
+[module/systray]
+type = internal/tray
+
+format-margin = 8pt
+tray-spacing = 16pt
+
+[module/xworkspaces]
+type = internal/xworkspaces
+
+label-active = %name%
+label-active-background = ${colors.background-alt}
+label-active-underline= ${colors.primary}
+label-active-padding = 1
+
+label-occupied = %name%
+label-occupied-padding = 1
+
+label-urgent = %name%
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 1
+
+label-empty = %name%
+label-empty-foreground = ${colors.disabled}
+label-empty-padding = 1
+
+
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:60:...%
+
+[module/filesystem]
+type = internal/fs
+interval = 25
+
+mount-0 = /
+
+label-mounted = %{F#F0C674}%mountpoint%%{F-} %percentage_used%%
+
+label-unmounted = %mountpoint% not mounted
+label-unmounted-foreground = ${colors.disabled}
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+format-volume-prefix = "VOL "
+format-volume-prefix-foreground = ${colors.primary}
+format-volume = <label-volume>
+
+label-volume = %percentage%%
+
+label-muted = muted
+label-muted-foreground = ${colors.disabled}
+
+[module/xkeyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+
+label-layout = %layout%
+label-layout-foreground = ${colors.primary}
+
+label-indicator-padding = 2
+label-indicator-margin = 1
+label-indicator-foreground = ${colors.background}
+label-indicator-background = ${colors.secondary}
+
+[module/memory2]
+; https://github.com/jaagr/polybar/wiki/Module:-memory
+type = internal/memory
+interval = 1
+; Available tokens:
+;   %percentage_used% (default)
+;   %percentage_free%
+;   %gb_used%
+;   %gb_free%
+;   %gb_total%
+;   %mb_used%
+;   %mb_free%
+;   %mb_total%
+label = %percentage_used%%
+
+format = Mem <label>
+format-prefix = "  "
+format-prefix-foreground = #3384d0
+format-underline = #3384d0
+format-foreground = ${colors.foreground}
+format-background = ${colors.background}
+
+[module/cpu2]
+; https://github.com/jaagr/polybar/wiki/Module:-cpu
+type = internal/cpu
+; Seconds to sleep between updates
+; Default: 1
+interval = 1
+format-foreground = ${colors.foreground}
+format-background = ${colors.background}
+format-prefix = "  "
+format-prefix-foreground = #cd1f3f
+format-underline = #cd1f3f
+
+
+[network-base]
+type = internal/network
+interval = 5
+format-connected = <label-connected>
+format-disconnected = <label-disconnected>
+label-disconnected = %{F#F0C674}%ifname%%{F#707880} disconnected
+
+[module/wlan]
+inherit = network-base
+interface-type = wireless
+label-connected = %{F#F0C674}%ifname%%{F-} %essid% %local_ip%
+
+[module/eth]
+inherit = network-base
+interface-type = wired
+label-connected = %{F#F0C674}%ifname%%{F-} %local_ip%
+
+[module/date]
+type = internal/date
+interval = 1
+
+date = %H:%M
+date-alt = %Y-%m-%d %H:%M:%S
+
+label = %date%
+label-foreground = ${colors.primary}
+
+[module/reboot]
+; {{{
+type = custom/text
+content-background = ${colors.red}
+content-foreground = ${colors.black}
+content = "  Reboot "
+click-left = "pkill -n polybar ; systemctl reboot"
+
+; }}}
+
+[module/poweroff]
+; {{{
+type = custom/text
+content-background = ${colors.magenta}
+content-foreground = ${colors.black}
+content = "  Poweroff "
+click-left = "pkill -n polybar ; systemctl poweroff"
+
+; }}}
+
+
+[settings]
+screenchange-reload = true
+pseudo-transparency = true
+
+; vim:ft=dosini
